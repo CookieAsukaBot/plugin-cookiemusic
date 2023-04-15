@@ -17,7 +17,7 @@ module.exports = {
             .setDescription(`La lista se termina, **${message.author.username}** me sacó. 💢`);
 
         if (queue) {
-            await queue.delete();
+            queue.delete();
             message.channel.send({
                 embeds: [embed]
             });

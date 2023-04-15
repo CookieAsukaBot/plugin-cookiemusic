@@ -17,7 +17,7 @@ module.exports = {
             .setDescription(`La lista se termina, **${interaction.user.username}** me sacó. 💢`);
 
         if (queue) {
-            await queue.delete();
+            queue.delete();
             interaction.reply({
                 embeds: [embed]
             });
