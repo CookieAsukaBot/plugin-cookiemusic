@@ -55,6 +55,27 @@ module.exports = (bot) => {
                 message: `@playerSkip: Skipping **${track.title}** due to an issue!`
             })
         })
+        .on('emptyQueue', (queue) => {
+            let embed = generateEmbed()
+                .setAuthor({
+                    name: '📀 Música'
+                })
+                .setDescription(`Se acabaron las canciones de la lista. 💔`);
+            queue.metadata.channel.send({
+                embeds: [embed]
+            });
+        })
+        .on('emptyChannel', (queue) => {
+            // Mensaje
+            let embed = generateEmbed()
+                .setAuthor({
+                    name: '💥 Fin de la lista'
+                })
+                .setDescription(`Todos se salieron del canal de voz. 💢`);
+            queue.metadata.channel.send({
+                embeds: [embed]
+            });
+        })
         .on('error', (queue, error) => {
             // Emitted when the player queue encounters error
             console.log({
