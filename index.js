@@ -3,11 +3,12 @@ const {Player} = require('discord-player');
 
 module.exports = {
     name: 'Music',
-    version: '0.1.1',
+    version: '0.1.2',
     cookiebot: '1.4.0',
     description: 'Plugin de música.',
     dependencies: [
         'discord-player',
+        '@discord-player/extractor',
         '@discordjs/opus',
         'opusscript',
         'play-dl',
@@ -26,6 +27,9 @@ module.exports = {
                 quality: 'highestaudio'
             }
         });
+
+        // Utilizar los extractores (para buscar y obtener música)
+        await player.extractors.loadDefault();
 
         // Eventos
         bot.player = player;

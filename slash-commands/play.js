@@ -25,12 +25,8 @@ module.exports = {
 			return interaction.reply(`¡**${interaction.user.username}**, usa \`${bot.prefix}${this.name} ${this.usage}\` para agregar una canción a la lista!`);
 		}
 
-        interaction.reply({
-            content: `Tu canción se agregará a la lista. ✅`,
-            ephemeral: true
-        });
-
 		// Comprobar random
+		interaction.reply('Tu canción se agregará a la lista. ✅');
 		let random = false;
 		if (args.toLowerCase().trim() == "random") random = (await getRandomSong(interaction.guildId))[0].metadata.url;
 
