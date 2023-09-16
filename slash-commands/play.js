@@ -14,7 +14,7 @@ module.exports = {
         let args = interaction.options.getString('input');
         // Canal de voz
         let voiceChannel = interaction.member.voice.channel;
-        if (!voiceChannel) return interaction.reply(`**${interaction.user.username}**, no estás en un canal de voz!`);
+        if (!voiceChannel) return interaction.reply(`**${interaction.user.globalName}**, no estás en un canal de voz!`);
 
 		// Comprobar args
 		if (args.length < 1) {
@@ -22,7 +22,7 @@ module.exports = {
 			let queue = await bot.player.nodes.get(interaction.guildId);
 			if (queue.node.isPlaying()) return interaction.reply({ embeds: [embedCurrentTrack(queue)] });
 
-			return interaction.reply(`¡**${interaction.user.username}**, usa \`${bot.prefix}${this.name} ${this.usage}\` para agregar una canción a la lista!`);
+			return interaction.reply(`¡**${interaction.user.globalName}**, usa \`${bot.prefix}${this.name} ${this.usage}\` para agregar una canción a la lista!`);
 		}
 
 		// Comprobar random

@@ -19,7 +19,7 @@ module.exports = {
             query = args.trim();
         } else {
             let queue = await bot.player.nodes.get(interaction.guildId);
-            if (!queue && !queue?.node.isPlaying()) return interaction.reply(`**${interaction.user.username}**, no se está reproduciendo ninguna canción ahora mismo.`);
+            if (!queue && !queue?.node.isPlaying()) return interaction.reply(`**${interaction.user.globalName}**, no se está reproduciendo ninguna canción ahora mismo.`);
 
             query = queue.currentTrack.title;
         }

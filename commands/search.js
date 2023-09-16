@@ -18,10 +18,10 @@ module.exports = {
 	async execute (message, args, bot) {
         // Canal de voz
         let voiceChannel = message.member.voice.channel;
-        if (!voiceChannel) return message.channel.send(`**${message.author.username}**, no estás en un canal de voz!`);
+        if (!voiceChannel) return message.channel.send(`**${message.author.globalName}**, no estás en un canal de voz!`);
 
         // Buscar
-        if (!args.length) return message.channel.send(`**${message.author.username}**, escribe el nombre de una canción.`);
+        if (!args.length) return message.channel.send(`**${message.author.globalName}**, escribe el nombre de una canción.`);
         const results = await bot.player.search(args.join(' ').trim(), {
             requestedBy: message.author
         });

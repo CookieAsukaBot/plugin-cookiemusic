@@ -7,7 +7,7 @@ module.exports = {
 		.setDescription('Salta la canción que se está reproduciendo.'),
 	async execute(interaction, bot) {
         let queue = await bot.player.nodes.get(interaction.guildId);
-        if (!queue) return interaction.reply(`**${message.author.username}**, no se está reproduciendo ninguna canción ahora mismo.`);
+        if (!queue) return interaction.reply(`**${message.author.globalName}**, no se está reproduciendo ninguna canción ahora mismo.`);
 
         // Skip
         await queue.node.skip();

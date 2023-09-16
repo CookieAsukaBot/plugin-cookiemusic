@@ -11,7 +11,7 @@ module.exports = {
 	async execute (message, args, bot) {
         // Canal de voz
         let voiceChannel = message.member.voice.channel;
-        if (!voiceChannel) return message.channel.send(`**${message.author.username}**, no estás en un canal de voz!`);
+        if (!voiceChannel) return message.channel.send(`**${message.author.globalName}**, no estás en un canal de voz!`);
 
 		// Comprobar args
 		if (args.length < 1) {
@@ -19,7 +19,7 @@ module.exports = {
 			let queue = await bot.player.nodes.get(message.guild);
 			if (queue.node.isPlaying()) return message.channel.send({ embeds: [embedCurrentTrack(queue)] });
 
-			return message.channel.send(`¡**${message.author.username}**, usa \`${bot.prefix}${this.name} ${this.usage}\` para agregar una canción a la lista!`);
+			return message.channel.send(`¡**${message.author.globalName}**, usa \`${bot.prefix}${this.name} ${this.usage}\` para agregar una canción a la lista!`);
 		}
 
 		// Comprobar random

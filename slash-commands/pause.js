@@ -7,7 +7,7 @@ module.exports = {
 		.setDescription('Pausa o reanuda la canción.'),
 	async execute(interaction, bot) {
         let queue = await bot.player.nodes.get(interaction.guildId);
-        if (!queue) return interaction.reply(`**${interaction.user.username}**, no se está reproduciendo ninguna canción ahora mismo.`);
+        if (!queue) return interaction.reply(`**${interaction.user.globalName}**, no se está reproduciendo ninguna canción ahora mismo.`);
 
         let embed = await pause(queue);
 

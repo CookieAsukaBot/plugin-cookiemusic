@@ -3,7 +3,7 @@ const {Player} = require('discord-player');
 
 module.exports = {
     name: 'Music',
-    version: '0.1.2',
+    version: '0.1.3',
     cookiebot: '1.4.0',
     description: 'Plugin de música.',
     dependencies: [

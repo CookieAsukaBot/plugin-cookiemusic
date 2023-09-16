@@ -43,7 +43,7 @@ module.exports = {
                 embeds: [embed]
             });
         } else {
-            message.channel.send(`**${message.author.username}**, no hay ninguna canción reproduciendose.`);
+            message.channel.send(`**${message.author.globalName}**, no hay ninguna canción reproduciendose.`);
         }
     }
 }

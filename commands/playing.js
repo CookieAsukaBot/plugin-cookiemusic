@@ -7,14 +7,14 @@ module.exports = {
     aliases: ['nowplaying', 'currentsong', 'shazam'],
 	async execute (message, args, bot) {
         let queue = await bot.player.nodes.get(message.guild);
-        if (!queue) return message.channel.send(`**${message.author.username}**, no se está reproduciendo ninguna canción ahora mismo.`);
+        if (!queue) return message.channel.send(`**${message.author.globalName}**, no se está reproduciendo ninguna canción ahora mismo.`);
 
         if (queue.node.isPlaying()) {
             message.channel.send({
                 embeds: [embedCurrentTrack(queue)]
             });
         } else {
-            message.channel.send(`**${message.author.username}**, no hay ninguna canción reproduciéndose.`);
+            message.channel.send(`**${message.author.globalName}**, no hay ninguna canción reproduciéndose.`);
         }
 	}
 }
