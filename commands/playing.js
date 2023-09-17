@@ -9,7 +9,7 @@ module.exports = {
         let queue = await bot.player.nodes.get(message.guild);
         if (!queue) return message.channel.send(`**${message.author.globalName}**, no se está reproduciendo ninguna canción ahora mismo.`);
 
-        if (queue.node.isPlaying()) {
+        if (queue?.node.isPlaying()) {
             message.channel.send({
                 embeds: [embedCurrentTrack(queue)]
             });

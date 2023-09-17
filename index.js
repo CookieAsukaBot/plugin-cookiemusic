@@ -3,15 +3,15 @@ const {Player} = require('discord-player');
 
 module.exports = {
     name: 'Music',
-    version: '0.1.3',
+    version: '0.1.4',
     cookiebot: '1.4.0',
     description: 'Plugin de música.',
     dependencies: [
         'discord-player',
         '@discord-player/extractor',
-        '@discordjs/opus',
+        'mediaplex',
         'opusscript',
-        'play-dl',
+        'youtube-ext',
         'soundcloud-scraper',
         'youtube-sr'
     ],

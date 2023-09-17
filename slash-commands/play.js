@@ -20,7 +20,7 @@ module.exports = {
 		if (args.length < 1) {
 			// Comprobar queue
 			let queue = await bot.player.nodes.get(interaction.guildId);
-			if (queue.node.isPlaying()) return interaction.reply({ embeds: [embedCurrentTrack(queue)] });
+			if (queue?.node.isPlaying()) return interaction.reply({ embeds: [embedCurrentTrack(queue)] });
 
 			return interaction.reply(`¡**${interaction.user.globalName}**, usa \`${bot.prefix}${this.name} ${this.usage}\` para agregar una canción a la lista!`);
 		}

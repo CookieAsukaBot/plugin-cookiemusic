@@ -7,7 +7,7 @@ module.exports = {
 		.setDescription('La lista de canciones se reproducirán en un orden aleatorio.'),
 	async execute(interaction, bot) {
         let queue = await bot.player.nodes.get(interaction.guildId);
-        if (!queue) return message.channel.send(`**${interaction.user.globalName}**, no se está reproduciendo ninguna canción ahora mismo.`);
+        if (!queue) return interaction.reply(`**${interaction.user.globalName}**, no se está reproduciendo ninguna canción ahora mismo.`);
 
         await queue.tracks.shuffle();
 

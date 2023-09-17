@@ -17,7 +17,7 @@ module.exports = {
 		if (args.length < 1) {
 			// Comprobar queue
 			let queue = await bot.player.nodes.get(message.guild);
-			if (queue.node.isPlaying()) return message.channel.send({ embeds: [embedCurrentTrack(queue)] });
+			if (queue?.node.isPlaying()) return message.channel.send({ embeds: [embedCurrentTrack(queue)] });
 
 			return message.channel.send(`¡**${message.author.globalName}**, usa \`${bot.prefix}${this.name} ${this.usage}\` para agregar una canción a la lista!`);
 		}
