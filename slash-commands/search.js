@@ -5,6 +5,7 @@ const {play,volumen} = require('../controller/music.controller');
 let config = {
 	resultSize: 5,
 	time: 50, // segundos
+	maxButtons: 4 // comienza desde el 0
 }
 
 const generateButton = (song) => {
@@ -15,15 +16,16 @@ const generateButton = (song) => {
 		.setLabel(song);
 }
 
-const generateComponent = () => {
+const generateComponent = (size) => {
+	if (size == 0) return;
+	let currentButton;
 	const row = new ActionRowBuilder();
-
-	row.addComponents(generateButton("1"));
-	row.addComponents(generateButton("2"));
-	row.addComponents(generateButton("3"));
-	row.addComponents(generateButton("4"));
-	row.addComponents(generateButton("5"));
-
+	for (let index = 0; index < size; index++) {
+		if (index <= config.maxButtons) {
+			currentButton = 1 + index;
+			row.addComponents(generateButton(currentButton.toString()));
+		}
+	}
 	return row;
 }
 
@@ -69,9 +71,10 @@ module.exports = {
 			.setDescription(parsed);
 
 		// Responder
+		const buttons = generateComponent(results.tracks.length);
 		const message = await interaction.reply({
 			embeds: [embed],
-			components: [generateComponent()]
+			components: [buttons]
 		});
 
 		// Button collector
