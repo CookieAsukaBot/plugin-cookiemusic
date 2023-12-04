@@ -19,6 +19,7 @@ const play = async (player, voiceChannel, query, message, user) => {
             // volume: 100,
             leaveOnEmpty: true,
             leaveOnEnd: false,
+            skipOnNoStream: true // this is a workaround for the error: ERR_NO_RESULT
         }
     });
 }

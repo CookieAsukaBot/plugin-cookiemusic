@@ -50,10 +50,15 @@ module.exports = (bot) => {
             });
         })
         .on('playerSkip', (queue, track) => {
-            // Emitted when the audio player fails to load the stream for a song
-            console.log({
-                message: `@playerSkip: Skipping **${track.title}** due to an issue!`
-            })
+            let embed = generateEmbed()
+                .setAuthor({
+                    name: '📀 Música',
+                    url: track.url
+                })
+                .setDescription(`Problema al intentar reproducir **${track.title}**; será **saltada**. ❌`);
+            queue.metadata.channel.send({
+                embeds: [embed]
+            });
         })
         .on('emptyQueue', (queue) => {
             let embed = generateEmbed()
@@ -85,9 +90,9 @@ module.exports = (bot) => {
         })
         .on('playerError', (queue, error) => {
             // Emitted when the audio player errors while streaming audio track
-            console.log({
-                message: `Player error event: ${error.message}`,
-                error
-            })
+            // console.log({
+            //     message: `Player error event: ${error.message}`,
+            //     error
+            // })
         });
 }
