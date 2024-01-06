@@ -3,7 +3,7 @@ const {Player} = require('discord-player');
 
 module.exports = {
     name: 'Music',
-    version: '0.1.4',
+    version: '0.1.6',
     cookiebot: '1.4.0',
     description: 'Plugin de música.',
     dependencies: [
@@ -11,7 +11,7 @@ module.exports = {
         '@discord-player/extractor',
         'mediaplex',
         'opusscript',
-        'youtube-ext',
+        'play-dl',
         'soundcloud-scraper',
         'youtube-sr'
     ],
@@ -28,7 +28,7 @@ module.exports = {
             }
         });
 
-        // Utilizar los extractores (para buscar y obtener música)
+        // Utilizar los extractores (para buscar y reproducir)
         await player.extractors.loadDefault();
 
         // Eventos
