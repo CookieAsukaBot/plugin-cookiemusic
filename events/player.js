@@ -49,13 +49,22 @@ module.exports = (bot) => {
                 }
             });
         })
-        .on('playerSkip', (queue, track) => {
+        .on('playerSkip', (queue, track, reason, description) => {
+            let responses = {
+                'ERR_NO_STREAM': `Problema al intentar reproducir **${track.title}**; será **saltada**. ❌`,
+                'MANUAL': `Se saltó la canción **${track.title}**. ✅`,
+                'SEEK_OVER_THRESHOLD': `Problema al intentar reproducir **${track.title}**; será **saltada**. ❌`,
+                'JUMPED_TO_ANOTHER_TRACK': `Se saltó la canción **${track.title}**. ✅`,
+                'SKIP_TO_ANOTHER_TRACK': `Se saltó la canción **${track.title}**. ✅`,
+                'HISTORY_NEXT_TRACK': `Se saltó la canción **${track.title}**. ✅`,
+            }
+
             let embed = generateEmbed()
                 .setAuthor({
-                    name: '📀 Música',
+                    name: '⏩ Saltada',
                     url: track.url
                 })
-                .setDescription(`Problema al intentar reproducir **${track.title}**; será **saltada**. ❌`);
+                .setDescription(responses[reason]);
             queue.metadata.channel.send({
                 embeds: [embed]
             });
@@ -86,13 +95,13 @@ module.exports = (bot) => {
             console.log({
                 event: `General player error event: ${error.message}`,
                 error
-            })
+            });
         })
         .on('playerError', (queue, error) => {
             // Emitted when the audio player errors while streaming audio track
-            // console.log({
-            //     message: `Player error event: ${error.message}`,
-            //     error
-            // })
+            console.log({
+                message: `Player error event: ${error.message}`,
+                error
+            });
         });
 }

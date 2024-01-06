@@ -16,26 +16,11 @@ const play = async (player, voiceChannel, query, message, user) => {
         nodeOptions: {
             metadata: message,
             selfDeaf: false,
-            // volume: 100,
+            volume: 1,  // workaround: el bot entra con el volumen al máximo
             leaveOnEmpty: true,
-            leaveOnEnd: false,
-            skipOnNoStream: true // this is a workaround for the error: ERR_NO_RESULT
+            leaveOnEnd: false
         }
     });
-}
-
-/**
- * Embed con el mensaje satisfactorio de "saltar" una canción.
- * 
- * @returns Embed
- */
-const skip = () => {
-    return embed = new EmbedBuilder()
-        .setColor(process.env.BOT_COLOR)
-        .setAuthor({
-            name: '⏩ Saltada'
-        })
-        .setDescription(`Se **saltó** la canción. ✅`);
 }
 
 /**
@@ -95,7 +80,6 @@ const volumen = async (guild, queue) => {
 
 module.exports = {
     play,
-    skip,
     pause,
     shuffle,
     volumen,

@@ -1,4 +1,4 @@
-const {skip} = require('../controller/music.controller');
+
 
 module.exports = {
 	name: 'skip',
@@ -12,10 +12,5 @@ module.exports = {
 
         // Skip
         await queue.node.skip();
-
-        // Responder
-        message.channel.send({
-            embeds: [skip()]
-        });
 	}
 }
